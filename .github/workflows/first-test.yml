@@ -26,9 +26,6 @@ jobs:
       run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
-        git remote add upstream https://github.com/ahn-sj/github-actions-workflow-test.git
-        git fetch upstream master
-        git rebase upstream/master
         ./gradlew run
         git commit --allow-empty -m "Add changes"
         
