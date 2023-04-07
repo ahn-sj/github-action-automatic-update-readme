@@ -1,5 +1,3 @@
-package githubactions;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,12 +16,9 @@ public class ReaderUtils {
             while (scanner.hasNextLine()) {
                 lists.add(scanner.nextLine());
             }
-            for (String list : lists) {
-                System.out.println("list = " + list);
-            }
 
             writer = new BufferedWriter(new FileWriter(file, true));
-            writer.write("## " + "한 번 더");
+            writer.write("## " + lists.size() + "번째 줄 입니다.");
             writer.newLine();
             writer.flush();
             writer.close();
