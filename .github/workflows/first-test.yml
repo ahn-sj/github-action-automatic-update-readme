@@ -1,9 +1,22 @@
 name: workflow test
-on: push
+on: 
+  push:
+    branches: [ master ]
+    
 jobs:
-  echo:
+  build:
     runs-on: ubuntu-latest
+    
     steps:
-      - run: echo 'Hello, GitHub Actions!'
-      - run: ls -al
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+    
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew build
