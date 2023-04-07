@@ -5,3 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Hello, GitHub Actions!'
+      - run: ls-al
+      - uses: actions/checkout@v3
