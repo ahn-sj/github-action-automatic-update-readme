@@ -18,8 +18,9 @@ public class ReaderUtils {
             }
 
             writer = new BufferedWriter(new FileWriter(file, true));
-            writer.write("## " + lists.size() + "번째 줄 입니다.");
             writer.newLine();
+            writer.write("## " + lists.size() + "번째 줄 입니다.");
+            // writer.newLine();
             writer.flush();
             writer.close();
         } catch (FileNotFoundException e) {
