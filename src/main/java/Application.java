@@ -10,7 +10,7 @@ public class Application {
 
 		// TODO: 만약 오늘 날짜의 테이블이 없는 경우 생성
 		// TODO: ex) | + (for(member.size) + |)
-		board.existBoard();
+		// board.existBoard();
 		board.updateBoard();
 
 		for (String mem : members) {

@@ -27,3 +27,8 @@
 - [에러2: GitHub Actions bot email address? #26560](https://github.com/orgs/community/discussions/26560)
 - [에러3: Gradle: Task 'run' not found in root project](https://stackoverflow.com/questions/41194484/gradle-task-run-not-found-in-root-project)
 
+
+## 30번째 줄에 추가
+## 32번째 줄에 추가
+## 33번째 줄에 추가
+## 34번째 줄에 추가
