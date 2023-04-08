@@ -26,3 +26,7 @@
 - [에러1](https://github.com/ad-m/github-push-action/issues/96)
 
 ## 22번째 줄 입니다.
+## 1202번째 줄
+## 1221번째 줄
+## 30번째 줄에 추가
+## 32번째 줄에 추가

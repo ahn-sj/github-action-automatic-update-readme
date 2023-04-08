@@ -1,9 +1,5 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ReaderUtils {
@@ -18,7 +14,26 @@ public class ReaderUtils {
         memberNames.stream().map(memberName -> "memberName = " + memberName).forEach(System.out::println);
         System.out.println("studyBoard.getLocationIndex() = " + studyBoard.getLocationIndex());
 
+        testWriter(file);
+
         return Collections.unmodifiableList(memberNames);
+    }
+
+    private static void testWriter(File file) {
+        try {
+            Scanner scanner = new Scanner(file);
+
+            List<String> lines = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                lines.add(scanner.nextLine());
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            writer.newLine();
+            writer.write("## " + (lines.size() + 1) + "번째 줄에 추가");
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static List<String> toListWithFilter(String[] headers) {
