@@ -4,10 +4,17 @@ public class Application {
 
 	public static void main(String[] args) {
 		List<String> lines = ReaderUtils.getReadmeFile();
-		List<String> list = MemberBoard.extractMember(lines); // [깨비, 성재]
+		List<String> members = MemberBoard.extractMember(lines); // [깨비, 성재]
 
-		for (String s : list) {
-			System.out.println("s = " + s);
+		MemberBoard board = new MemberBoard(members);
+
+		// TODO: 만약 오늘 날짜의 테이블이 없는 경우 생성
+		// TODO: ex) | + (for(member.size) + |)
+		board.existBoard();
+		board.updateBoard();
+
+		for (String mem : members) {
+			System.out.println("mem = " + mem);
 		}
 	}
 }

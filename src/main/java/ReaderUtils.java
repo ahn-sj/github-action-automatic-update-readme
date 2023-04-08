@@ -1,5 +1,7 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class ReaderUtils {
     private static final String README_PATH = "./README.md";
@@ -37,5 +39,10 @@ public class ReaderUtils {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String[] getFileListInMemberDirectory(String member) {
+        File file = new File("./" + member); // ./깨비
+        return file.list(); // [ [깨비] 04월 08일.md,  [깨비] 4월 8일.md ]
     }
 }
