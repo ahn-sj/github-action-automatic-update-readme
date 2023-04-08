@@ -1,70 +1,41 @@
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ReaderUtils {
     private static final String README_PATH = "./README.md";
-    private static final String STUDY_MEMBER_HEADER = "## 스터디 멤버";
 
-    public static List<String> getStudyMember() {
-        File file = getReadmeFile();
-        StudyBoard studyBoard = extractMember(file);
-        List<String> memberNames = toListWithFilter(studyBoard.getHeaders());
+    public static List<String> getReadmeFile() {
+        File file = new File(README_PATH);
 
-        memberNames.stream().map(memberName -> "memberName = " + memberName).forEach(System.out::println);
-        System.out.println("studyBoard.getLocationIndex() = " + studyBoard.getLocationIndex());
+        List<String> lines = toListByReadme(file);
 
-        testWriter(file);
-
-        return Collections.unmodifiableList(memberNames);
+        // TODO: 스터디원 README 테스트 완료시 삭제
+        testWriter(file, lines.size());
+        return lines;
     }
 
-    private static void testWriter(File file) {
+    private static List<String> toListByReadme(File file) {
         try {
-            Scanner scanner = new Scanner(file);
-
             List<String> lines = new ArrayList<>();
+
+            Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 lines.add(scanner.nextLine());
             }
+            return lines;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("README 파일이 존재하지 않습니다.", e);
+        }
+    }
+
+    private static void testWriter(File file, int size) {
+        try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             writer.newLine();
-            writer.write("## " + (lines.size() + 1) + "번째 줄에 추가");
+            writer.write("## " + (size + 1) + "번째 줄에 추가");
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private static List<String> toListWithFilter(String[] headers) {
-        return Arrays
-                .stream(headers, 2, headers.length)
-                .collect(Collectors.toList());
-    }
-
-    private static StudyBoard extractMember(File file) {
-        int index = 0;
-        
-        try {
-            Scanner scanner = new Scanner(file);
-
-            while (scanner.hasNextLine()) {
-                index++;
-                String nextLine = scanner.nextLine();
-
-                if(nextLine.equals(STUDY_MEMBER_HEADER)) {
-                    String curLine = scanner.nextLine();
-                    String[] headers = curLine.replace(" ", "").split("\\|");
-                    return new StudyBoard(headers, index);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("README 파일이 존재하지 않습니다.", e);
-        }
-        throw new RuntimeException("스터디 구성원이 존재하지 않습니다.");
-    }
-
-    private static File getReadmeFile() {
-        return new File(README_PATH);
     }
 }
