@@ -18,7 +18,7 @@ public class MemberBoard {
     private static final int THIS_YEAR = LocalDateTime.now().getYear();
     private static final String FORMAT_TODAY_DATE = convertToDateFormat(LocalDate.now());
 
-    private List<String> members = new ArrayList<>();
+    private List<String> members;
 
     public MemberBoard(List<String> members) {
         this.members = members;
@@ -53,14 +53,14 @@ public class MemberBoard {
         for (String member : members) {
             String[] files = ReaderUtils.getFileListInMemberDirectory(member); // 멤버 폴더안 파일 목록
 
-            for (String file : files) { // 특정 멤버 파일 목록 전체 루프
-                Matcher matcher = pattern.matcher(file);
-
-                // TODO: 날짜가 일치할 경우 쓰기 작업
-                if (isMatchDate(matcher)) {
-                    System.out.println("=============> " + file);
-                }
-            }
+//            for (String file : files) { // 특정 멤버 파일 목록 전체 루프
+//                Matcher matcher = pattern.matcher(file);
+//
+//                // TODO: 날짜가 일치할 경우 쓰기 작업
+//                if (isMatchDate(matcher)) {
+//                    System.out.println("=============> " + file);
+//                }
+//            }
         }
     }
 
