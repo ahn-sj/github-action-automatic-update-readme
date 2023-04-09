@@ -1,8 +1,11 @@
+package board;
+
+import utils.ReaderUtils;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -53,14 +56,14 @@ public class MemberBoard {
         for (String member : members) {
             String[] files = ReaderUtils.getFileListInMemberDirectory(member); // 멤버 폴더안 파일 목록
 
-//            for (String file : files) { // 특정 멤버 파일 목록 전체 루프
-//                Matcher matcher = pattern.matcher(file);
-//
-//                // TODO: 날짜가 일치할 경우 쓰기 작업
-//                if (isMatchDate(matcher)) {
-//                    System.out.println("=============> " + file);
-//                }
-//            }
+            for (String file : files) { // 특정 멤버 파일 목록 전체 루프
+                Matcher matcher = pattern.matcher(file);
+
+                // TODO: 날짜가 일치할 경우 쓰기 작업
+                if (isMatchDate(matcher)) {
+                    System.out.println("=============> " + file);
+                }
+            }
         }
     }
 
