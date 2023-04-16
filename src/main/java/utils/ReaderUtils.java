@@ -1,20 +1,24 @@
 package utils;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static utils.DateUtils.FORMAT_TODAY_DATE;
+
 public class ReaderUtils {
+
     private static final String README_PATH = "./README.md";
 
     public static List<String> getReadmeFile() {
         File file = new File(README_PATH);
-
         List<String> lines = toListByReadme(file);
 
-        // TODO: 스터디원 README 테스트 완료시 삭제
-        testWriter(file, lines.size());
         return lines;
     }
 
@@ -32,19 +36,43 @@ public class ReaderUtils {
         }
     }
 
-    private static void testWriter(File file, int size) {
+    public static String[] getFileListInMemberDirectory(String member) {
+        File file = new File("./" + member); // ./깨비
+        return file.list();
+    }
+
+    public static void addLineWithDate(int joinMember) {
+        System.out.println("====> CREATE LINE WITH NOW DATE");
+
         try {
+            File file = new File(README_PATH);
+            String newLine = createNewLine(joinMember);
+
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            writer.newLine();
-            writer.write("## " + (size + 1) + "번째 줄에 추가");
+            writer.write("\n" + newLine);
             writer.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("날짜 칸 추가에 실패하였습니다.", e);
         }
     }
 
-    public static String[] getFileListInMemberDirectory(String member) {
-        File file = new File("./" + member); // ./깨비
-        return file.list(); // [ [깨비] 04월 08일.md,  [깨비] 4월 8일.md ]
+    private static String createNewLine(int joinMember) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("|").append(FORMAT_TODAY_DATE);
+        for (int i = 0; i < joinMember; i++) {
+            sb.append("|").append(" ");
+        }
+        System.out.println("==> Create New Line");
+        return sb.append("|").toString();
+    }
+
+    public static void applyMemberBoard(List<String> lines) {
+        try {
+            Path path = Paths.get(README_PATH);
+            Files.write(path, lines, StandardCharsets.UTF_8);
+            } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("==> Success overwritten README");
     }
 }

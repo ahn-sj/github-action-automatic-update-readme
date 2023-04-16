@@ -1,20 +1,5 @@
 # github-actions-workflow-test
 
-## 테스트1
-
-### 테스트2
-
-##한 번 더
-## 한 번 더
-
-## 스터디 멤버
-|     날짜      |  깨비 | 성재 |
-|:-----------:|:---:|:--------:|
-|  23/1/1(일)  | O | O |
-
-
----
-
 - [Java11 Supported distributions](https://github.com/actions/setup-java#supported-distributions)
 
 - [참고1](https://github.com/cheese10yun/github-action)
@@ -27,19 +12,10 @@
 - [에러2: GitHub Actions bot email address? #26560](https://github.com/orgs/community/discussions/26560)
 - [에러3: Gradle: Task 'run' not found in root project](https://stackoverflow.com/questions/41194484/gradle-task-run-not-found-in-root-project)
 
+---
 
-## 30번째 줄에 추가
-## 32번째 줄에 추가
-## 33번째 줄에 추가
-## 34번째 줄에 추가
-## 35번째 줄에 추가
-## 36번째 줄에 추가
-## 37번째 줄에 추가
-## 38번째 줄에 추가
-## 39번째 줄에 추가
-<<<<<<< HEAD
-## 40번째 줄에 추가
-## 41번째 줄에 추가
-=======
-## 40번째 줄에 추가
->>>>>>> f30453515ddb790b41a0eec3ffca9bf2c18c4c02
+## 스터디 멤버
+|날짜|깨비|성재| 테스터 |
+|:-----------:|:---:|:--------:|:---:|
+|23/1/1(일)|O|O||
+|23/4/16(일)| |■|■|
