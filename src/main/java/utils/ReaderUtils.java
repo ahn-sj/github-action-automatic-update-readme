@@ -49,7 +49,7 @@ public class ReaderUtils {
             String newLine = createNewLine(joinMember);
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            writer.write("\n" + newLine);
+            writer.write(newLine);
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException("날짜 칸 추가에 실패하였습니다.", e);
