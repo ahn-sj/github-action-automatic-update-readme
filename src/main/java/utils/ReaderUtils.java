@@ -41,31 +41,6 @@ public class ReaderUtils {
         return file.list();
     }
 
-    public static void addLineWithDate(int joinMember) {
-        System.out.println("====> CREATE LINE WITH NOW DATE");
-
-        try {
-            File file = new File(README_PATH);
-            String newLine = createNewLine(joinMember);
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            writer.write(newLine);
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException("날짜 칸 추가에 실패하였습니다.", e);
-        }
-    }
-
-    private static String createNewLine(int joinMember) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("|").append(FORMAT_TODAY_DATE);
-        for (int i = 0; i < joinMember; i++) {
-            sb.append("|").append(" ");
-        }
-        System.out.println("==> Create New Line");
-        return sb.append("|").toString();
-    }
-
     public static void applyMemberBoard(List<String> lines) {
         try {
             Path path = Paths.get(README_PATH);
